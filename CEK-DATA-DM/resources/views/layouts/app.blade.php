@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                       <li class="nav-item active">
-                        <a class="nav-link" href="mastercif">Master CIF<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('mastercif') }}">Master CIF<span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="dataTambahan">Info Tambahan CIF</a>

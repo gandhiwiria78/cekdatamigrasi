@@ -22,8 +22,9 @@ Route::get('/', 'BlogController@home');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/mastercif', 'BlogController@mastercif');
+Route::get('/mastercif', 'BlogController@mastercif')->name('mastercif');;
 Route::get('/tambahancif', 'BlogController@tambahancif');
+
 Route::get('/jalinan','BlogController@klaimJalinan');
 Route::get('/jalinan/import','MutasiSimpananController@show')->name('importjalinan');
 Route::post('/jalinan/import','MutasiSimpananController@Store');
@@ -32,7 +33,7 @@ Route::get('/jalinan/laporan','MutasiSimpananController@laporanJalinan');
 
 Route::get('/mastercif/import','cifimportController@show')->name('importmastercif');
 Route::post('/mastercif/import','cifimportController@Store');
+Route::get('/mastercif/cekdata', 'cifimportController@Cekcif')->name('Cekcif'); 
+Route::post('/mastercif/cekdata','cifimportController@Cekdata')->name('cekdata');
 
 Auth::routes();
-
-

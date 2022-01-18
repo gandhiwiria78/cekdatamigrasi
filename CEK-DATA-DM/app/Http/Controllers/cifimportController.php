@@ -21,9 +21,12 @@ class cifimportController extends Controller
         $mastercif = $request->file("mastercif");
         //dd($mastercif);
         Excel::import(new SheetCifimport, $mastercif);
-        
         //return redirect('/')->with('success', 'All good!');
         return back()->withStatus('Selesai import');
+    }
+
+    public function CekCif(Request $request){
+        return view("mastercif/cekdata");
     }
 
 

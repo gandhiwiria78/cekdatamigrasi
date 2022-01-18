@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 use App\MutasiSimpanan;
+use App\status_TP;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -15,9 +16,12 @@ class mutasiSimpananimport implements WithHeadingRow, ToCollection
     public function collection(Collection $collection)
     {
         //dd($collection);
+        status_TP::create([
+            
+        ]);
+
         foreach ($collection as $row) 
         {   
-
             //dd($row['tgljurnal']);
             $tanggalJurnal=Carbon::parse($row['tgljurnal'])->format('Y-m-d H:i:s');
             $tgljamdibuat=Carbon::parse($row['tgljamdibuat'])->format('Y-m-d H:i:s');

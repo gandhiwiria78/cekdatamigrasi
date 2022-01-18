@@ -16,6 +16,7 @@ class RekSimpanan extends Controller
      
      public function Store(Request $request)
      {
+         
      }
      
 }
