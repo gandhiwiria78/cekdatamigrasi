@@ -16,12 +16,11 @@ class mutasiSimpananimport implements WithHeadingRow, ToCollection
     public function collection(Collection $collection)
     {
         //dd($collection);
-        status_TP::create([
-            
-        ]);
+        
 
         foreach ($collection as $row) 
         {   
+
             //dd($row['tgljurnal']);
             $tanggalJurnal=Carbon::parse($row['tgljurnal'])->format('Y-m-d H:i:s');
             $tgljamdibuat=Carbon::parse($row['tgljamdibuat'])->format('Y-m-d H:i:s');
@@ -38,7 +37,6 @@ class mutasiSimpananimport implements WithHeadingRow, ToCollection
                 'kredit' => $row['kredit'],
                 'tgljamdibuat'=>$tgljamdibuat
             ]);
-            
             
         }
     }

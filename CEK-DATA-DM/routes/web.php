@@ -34,6 +34,6 @@ Route::get('/jalinan/laporan','MutasiSimpananController@laporanJalinan');
 Route::get('/mastercif/import','cifimportController@show')->name('importmastercif');
 Route::post('/mastercif/import','cifimportController@Store');
 Route::get('/mastercif/cekdata', 'cifimportController@Cekcif')->name('Cekcif'); 
-Route::post('/mastercif/cekdata','cifimportController@Cekdata')->name('cekdata');
+Route::post('/mastercif/cekdata','cifimportController@Cekdata')->name('Cekcif');
 
 Auth::routes();

@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\CIF;
+use App\status_TP;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Illuminate\Support\Collection;
@@ -93,6 +94,7 @@ class CifImport implements ToCollection ,WithHeadingRow
 
     public function collection(Collection $rows)
     { 
+        
        foreach($rows as $row){
             $nocifalt = $row["nocifalt"];
             $kodecabang = $row["kodecabang"];
@@ -138,7 +140,11 @@ class CifImport implements ToCollection ,WithHeadingRow
                 "tglbukacif"=>$tglbukacif
             ]); 
         }
-       
+        status_TP::create([
+            'TP'=> $kodecabang,
+            'status_TP'=>'sudah terupload',
+        ]);
+        
     }
 
     public function chunkSize(): int

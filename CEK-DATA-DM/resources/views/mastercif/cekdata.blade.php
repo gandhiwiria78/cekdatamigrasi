@@ -9,25 +9,28 @@
                 CEK CIF
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('cekdata') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Cekcif') }}" method="POST" >
                         @csrf
-                        <label class="my-1 mr-2" for="pilihCek">PILIH</label>
-                        <select class="custom-select my-1 mr-sm-2" id="pilihCek">
-                            <option selected>Choose...</option>
-                            <option value="1">SEMUA LOGIC CEK</option>
+                        <label class="my-1 mr-2" for="pilihTP">TP</label>
+                        <select class="custom-select my-1 mr-sm-2" id="pilihTP" name="pilihTP">
+                         
+                            @isset($listTP)
+                                @foreach ($listTP as $tp)
+                                    <option value="{{ $tp['TP'] }}">
+                                     {{ $tp['TP'] }}
+                                    </option>
+    
+                                @endforeach
+                            @endisset
+                        </select>
+                        <label class="my-1 mr-2" for="pilihCek">CEK TEMPLATE</label>
+                        <select class="custom-select my-1 mr-sm-2" id="pilihCek" name="pilihCek">
+                            <option value="1">SEMUA CEK</option>
                             <option value="2">DOUBLE CIF</option>
                             <option value="3">NOMOR KTP</option>
                             <option value="4">NOMOR KTP</option>
                         </select>
-                        <label class="my-1 mr-2" for="pilihTP">PILIH TP</label>
-                        <select class="custom-select my-1 mr-sm-2" id="pilihTP">
-                            <option selected>Choose...</option>
-                            @isset($records)
-                                @foreach ($users as $user)
-                                    <p>This is user {{ $user->id }}</p>
-                                @endforeach
-                            @endisset
-                        </select>
+                        
                         <button type="submit" class="btn btn-primary my-1">Submit</button>
                       </form>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CIF;
+use App\status_TP;
 use App\Imports\SheetCifimport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,10 +27,53 @@ class cifimportController extends Controller
         return back()->withStatus('Selesai import');
     }
 
-    public function CekCif(Request $request){
-        return view("mastercif/cekdata");
+    public function CekCif(){
+
+        //dd(status_TP::get());
+
+        $data = status_TP::all();
+        return view("mastercif/cekdata",[
+            'listTP'=> $data
+        ]);
+
+
     }
 
+    public function Cekdata(Request $request){
+
+       //get data anggota cif
+       $cifs = CIF::where('kodecabang',$request->pilihTP)->get();
+       
+       // proses check data
+       //dd($request->pilihCek);
+       if ( $request->pilihCek ==1){
+            $this->cekDoublecif($cifs);
+       }elseif($request->pilihCek ==2){
+            $this->cekDoublecif($cifs);
+            $this->cekKTP($cifs);
+       }elseif($request->pilihCek ==3){
+
+       }
+
+       
+        $data = status_TP::all();
+        return view("mastercif/cekdata",[
+            
+            'listTP'=> $data
+        ]);
+
+
+    }
+
+    function cekDoublecif($data){
+        foreach ($data as $cif ) {
+           // dd($cif);
+        }
+    }
+
+    function cekKTP($data){
+        dd('cekdata');
+    }
 
 }
 
